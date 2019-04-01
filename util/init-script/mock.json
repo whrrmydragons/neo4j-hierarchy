@@ -1,0 +1,52 @@
+[
+  {
+    "label":"Hierarchy",
+    "name": "root",
+    "above": ["someHierarchy1","someHierarchy2","someHierarchy3"]
+  },
+  {
+    "label":"Hierarchy",
+    "name": "someHierarchy1",
+    "above": ["someHierarchy1_1","someHierarchy1_2","someHierarchy1_3"]
+  },
+  {
+    "label":"Hierarchy",
+    "name": "someHierarchy2",
+    "above": []
+  },
+  {
+      "label":"Hierarchy",
+    "name": "someHierarchy3",
+    "above": []
+  },
+  {
+      "label":"Hierarchy",
+    "name": "someHierarchy1_1",
+    "above": []
+  },
+  {
+      "label":"Hierarchy",
+      "name": "someHierarchy1_2",
+    "above": []
+  },
+  {
+      "label":"Hierarchy",
+      "name": "someHierarchy1_3",
+    "above": []
+  },
+  {
+    "label":"Person",
+    "name": "person_root",
+  "under": ["root"]
+},
+{
+  "label":"Person",
+  "name": "person_someHierarchy1",
+"under": ["someHierarchy1"]
+},
+{
+  "label":"Person",
+  "name": "person_someHierarchy1_1",
+"under": ["someHierarchy1_1"]
+}]
+ 
