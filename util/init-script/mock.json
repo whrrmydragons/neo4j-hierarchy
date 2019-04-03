@@ -36,16 +36,19 @@
   },
   {
     "label":"Person",
+    "id":1,
     "name": "person_root",
   "under": ["root"]
 },
 {
   "label":"Person",
+  "id":2,
   "name": "person_someHierarchy1",
 "under": ["someHierarchy1"]
 },
 {
   "label":"Person",
+  "id":3,
   "name": "person_someHierarchy1_1",
 "under": ["someHierarchy1_1"]
 }]

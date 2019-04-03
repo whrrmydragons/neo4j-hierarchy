@@ -18,7 +18,9 @@ function generateHierarchyNodeQuery(node) {
   return query;
 }
 function generatePersonNodeQuery(node) {
-  let query = `MERGE (p:Person{name:'${node.name}'})\n WITH p\n`;
+  let query = `MERGE (p:Person{name:'${node.name}',id:'${
+    node.id
+  }'})\n WITH p\n`;
   query += node.under
     .map(
       (under, i) => `MATCH (h${i}:Hierarchy{name:'${under}'})
