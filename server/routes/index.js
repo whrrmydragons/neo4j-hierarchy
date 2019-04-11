@@ -14,7 +14,7 @@ async function neo4jRunQuery(query) {
   const result = await session.run(query);
   session.close();
   // on application exit:
-  driver.close();
+  // driver.close();
 
   return neo4jRecordsToJSON(result.records);
 }
@@ -33,6 +33,18 @@ function neo4jLosslesIdToNumber(id) {
   return id.toString();
 }
 
+router.get("/personsDirectlyUnderHierarchy/:HierarchyID", async function(
+  req,
+  res,
+  next
+) {
+  const hierarchyID = req.params.HierarchyID;
+  if (!hierarchyID) return res.status(400); //bad request
+  const query = `MATCH (h)-[:above]->(p:Person) WHERE ID(h) = ${hierarchyID} WITH p.name as name,p.id as id,ID(p) as _id RETURN name,id,_id`;
+  let ret = await neo4jRunQuery(query);
+  res.json(ret);
+});
+
 router.get("/personsUnderHierarchy/:HierarchyID", async function(
   req,
   res,
@@ -40,7 +52,7 @@ router.get("/personsUnderHierarchy/:HierarchyID", async function(
 ) {
   const hierarchyID = req.params.HierarchyID;
   if (!hierarchyID) return res.status(400); //bad request
-  const query = `MATCH (h)-[:above*]-(p:Person) WHERE ID(h) = ${hierarchyID} WITH p.name as name,p.id as id,ID(p) as _id RETURN name,id,_id`;
+  const query = `MATCH (h)-[:above*]->(p:Person) WHERE ID(h) = ${hierarchyID} WITH p.name as name,p.id as id,ID(p) as _id RETURN name,id,_id`;
   let ret = await neo4jRunQuery(query);
   res.json(ret);
 });
