@@ -7,12 +7,11 @@ const driver = neo4j.driver(
   neo4j.auth.basic("neo4j", "password"),
   { disableLosslessIntegers: true }
 );
+const session = driver.session();
 
 async function neo4jRunQuery(query) {
-  const session = driver.session();
-  console.log(query);
+  // const session = driver.session();
   const result = await session.run(query);
-  session.close();
   // on application exit:
   // driver.close();
 
